@@ -3,7 +3,11 @@ var apiRoutes = express.Router(); //use the router function within express to de
 var bodyParser = require('body-parser'); //use the body parser to parse the body request from the client
 
 apiRoutes.get('/', function(req, res) {
-    res.send('main feed');
+    res.send('get post');
+});
+
+apiRoutes.post('/', function(req, res) {
+    res.send('create post');
 });
 
 module.exports = apiRoutes;

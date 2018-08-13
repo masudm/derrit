@@ -19,5 +19,10 @@ var apiRoutes = express.Router();
 //the routes within the base route and what each route does
 app.use('/', require('./routes/v1/index'));
 
+//TODO: login middleware
+app.use('/post', require('./routes/v1/post'));
+app.use('/comment', require('./routes/v1/comment'));
+app.use('/user', require('./routes/v1/user'));
+
 app.listen(8000, () => console.log('Derrit server listening on port 3000!'));
 
