@@ -1,10 +1,12 @@
-var admin = require("firebase-admin");
+var firebase = require("firebase");
 
-var serviceAccount = require("../../firebasekey.json");
+var config = {
+    apiKey: "AIzaSyD0-dvjFhHjmwvh9KuoX6dvWnbTxEuF7Xs",
+    authDomain: "https://derrit-3345a.firebaseio.com",
+    databaseURL: "https://<DATABASE_NAME>.firebaseio.com",
+    storageBucket: "<BUCKET>.appspot.com",
+};
 
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://derrit-3345a.firebaseio.com"
-});
+firebase.initializeApp(config);
 
-module.exports = admin;
+module.exports = firebase;
