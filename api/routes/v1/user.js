@@ -8,22 +8,30 @@ apiRoutes.get('/', function(req, res) {
 });
 
 apiRoutes.post('/', function(req, res) {
+    let email = req.body.email;
+    let password = req.body.password;
+    let username = req.body.username;
+
     firebase.auth().createUser({
-        email: "user@example.com",
+        email: email,
         emailVerified: false,
-        phoneNumber: "+11234567890",
-        password: "secretPassword",
-        displayName: "John Doe",
-        photoURL: "http://www.example.com/12345678/photo.png",
+        password: password,
+        displayName: username,
         disabled: false
-      })
-        .then(function(userRecord) {
-          // See the UserRecord reference doc for the contents of userRecord.
-          console.log("Successfully created new user:", userRecord.uid);
-        })
-        .catch(function(error) {
-          console.log("Error creating new user:", error);
+    }).then(function(userRecord) {
+        // See the UserRecord reference doc for the contents of userRecord.
+        //console.log("Successfully created new user:", userRecord);
+
+        res.json({
+            success: true
         });
+    }).catch(function(error) {
+        console.log("Error creating new user:", error);
+
+        res.json({
+            success: false
+        });
+    });
 });
 
 module.exports = apiRoutes;
