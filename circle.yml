@@ -1,0 +1,14 @@
+machine:
+  node:
+    version: 8.1.2
+
+deployment:
+  development:
+    branch: master
+    commands:
+      - npm run deploy:ci:dev
+  production:
+    branch: production
+    commands:
+      - npm run deploy:ci:prod
+

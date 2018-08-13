@@ -1,0 +1,7 @@
+{
+  "name": "hello-world-prod",
+  "alias": "hello-world.io",
+  "env": {
+    "DATABASE_NAME": "production"
+  }
+}
