@@ -11,7 +11,7 @@ apiRoutes.get('/', function(req, res) {
         .then(function(userRecord) {
             // See the UserRecord reference doc for the contents of userRecord.
 
-            res.json({
+            return res.json({
                 success: true,
                 user: userRecord.toJSON()
             });
@@ -19,7 +19,7 @@ apiRoutes.get('/', function(req, res) {
         .catch(function(error) {
             console.log("Error fetching user data:", error);
 
-            res.json({
+            return res.json({
                 success: false
             });
         });
@@ -41,14 +41,14 @@ apiRoutes.post('/', function(req, res) {
             // See the UserRecord reference doc for the contents of userRecord.
             //console.log("Successfully created new user:", userRecord);
 
-            res.json({
+            return res.json({
                 success: true
             });
         })
         .catch(function(error) {
             console.log("Error creating new user:", error);
 
-            res.json({
+            return res.json({
                 success: false
             });
         });
@@ -60,14 +60,14 @@ apiRoutes.post('/login', function(req, res) {
 
     firebase.auth().signInWithEmailAndPassword(email, password)
         .then((user) => {
-            res.json({
+            return res.json({
                 success: true,
                 user: user
             });
         })
         .catch((err) => {
             console.log(err);
-            res.json({
+            return res.json({
                 success: false
             });
         })
