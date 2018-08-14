@@ -4,4 +4,5 @@ node_modules
 static
 .DS_Store
 now.json
+package-lock.json
 firebasekey.json
