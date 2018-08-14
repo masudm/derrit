@@ -10,21 +10,23 @@ import Button from '../components/button'
 const PageContainer = styled(Div)`
   flex-direction: column;
   font-family: ${props => props.theme.serifFontFamily};
-  align-items: center;
 `
-export default class Login extends Component {
+export default class Signup extends Component {
   render() {
     return (
       <Page>
         <PageContainer>
           <Modal>
+            <Input placeholder="Username" type="username" />
+            <br />
+            <br />
             <Input placeholder="Email" type="email" />
             <br />
             <br />
             <Input placeholder="Password" type="password" />
             <br />
             <br />
-            <Button name="Login" onClick={() => alert('login')} />
+            <Button name="Signup" onClick={() => alert('signup')} />
           </Modal>
         </PageContainer>
       </Page>
