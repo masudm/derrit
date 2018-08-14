@@ -13,21 +13,42 @@ const PageContainer = styled(Div)`
   font-family: ${props => props.theme.serifFontFamily};
 `
 export default class Signup extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      email: '',
+      password: '',
+      username: '',
+    }
+  }
+
+  handleChange(event, key) {
+    this.setState({ [key]: event.target.value })
+  }
+
+  signup() {
+    const email = this.state.email
+    const username = this.state.username
+    const password = this.state.password
+
+    console.log(email, password, username)
+  }
+
   render() {
     return (
       <Page>
         <PageContainer>
           <Modal>
-            <Input placeholder="Username" type="username" />
+            <Input placeholder="Username" type="username" onChange={evt => this.handleChange(evt, 'username')} value={this.state.username} />
             <br />
             <br />
-            <Input placeholder="Email" type="email" />
+            <Input placeholder="Email" type="email" onChange={evt => this.handleChange(evt, 'email')} value={this.state.email} />
             <br />
             <br />
-            <Input placeholder="Password" type="password" />
+            <Input placeholder="Password" type="password" onChange={evt => this.handleChange(evt, 'password')} value={this.state.password} />
             <br />
             <br />
-            <Button name="Signup" onClick={() => alert('signup')} />
+            <Button name="Signup" onClick={() => this.signup()} />
             <Link route="/login">
               <Button name="Or Login" />
             </Link>
