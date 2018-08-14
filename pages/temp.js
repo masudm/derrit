@@ -4,8 +4,10 @@ import Page from 'components/page'
 import Div from 'components/core/div'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import '~/styles/global'
 import Wrapper from '../components/wrapper'
+import * as postActions from '../actions/postActions'
 
 const PageContainer = styled(Div)`
   flex-direction: column;
@@ -14,7 +16,7 @@ const PageContainer = styled(Div)`
 
 class Index extends Component {
   componentDidMount() {
-    console.log(this.props.posts)
+    console.log(this.props.postActions.getPosts())
   }
   render() {
     return (
@@ -27,4 +29,16 @@ class Index extends Component {
   }
 }
 
-export default Wrapper(connect(state => state)(Index))
+function mapStateToProps(state) {
+  return {
+    posts: state.posts,
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    postActions: bindActionCreators(postActions, dispatch),
+  }
+}
+
+export default Wrapper(connect(mapStateToProps, mapDispatchToProps)(Index))
