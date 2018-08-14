@@ -1,8 +1,8 @@
 var express = require('express'); //the express web server dependency
 var apiRoutes = express.Router(); //use the router function within express to define the routes
 var bodyParser = require('body-parser'); //use the body parser to parse the body request from the client
-
 var firebaseAdmin = require('../../helpers/firebaseAdmin');
+
 //setup a db connection to the firestore
 var db = firebaseAdmin.firestore();
 
@@ -32,7 +32,29 @@ apiRoutes.get('/', function(req, res) {
 });
 
 apiRoutes.post('/', function(req, res) {
-    res.send('create post');
+    let title = req.body.title;
+    let body = req.body.body;
+    let userId = req.body.userId;
+
+    let data = {
+        title,
+        body,
+        userId,
+        timestamp: new Date
+    };
+      
+    var setDoc = db.collection('posts').add(data)
+        .then((ref) => {
+            return res.json({
+                success: true,
+            });
+        })
+        .catch((err) => {
+            console.log(err);
+            return res.json({
+                success: false,
+            });
+        });
 });
 
 module.exports = apiRoutes;
