@@ -6,6 +6,7 @@ import '~/styles/global'
 import Modal from '../components/modal'
 import Input from '../components/input'
 import Button from '../components/button'
+import { Link } from '../routes'
 
 const PageContainer = styled(Div)`
   flex-direction: column;
@@ -27,6 +28,9 @@ export default class Signup extends Component {
             <br />
             <br />
             <Button name="Signup" onClick={() => alert('signup')} />
+            <Link route="/login">
+              <Button name="Or Login" />
+            </Link>
           </Modal>
         </PageContainer>
       </Page>

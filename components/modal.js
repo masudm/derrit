@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 const Container = styled.div`
   align-self: center;
-  background-color: grey;
+  background-color: lightgrey;
   display: inline;
   padding: 10px;
   text-align: center;
