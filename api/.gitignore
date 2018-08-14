@@ -1,0 +1,8 @@
+.next
+node_modules
+*.log
+static
+.DS_Store
+now.json
+firebasekey.json
+package-lock.json
