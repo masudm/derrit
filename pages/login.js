@@ -44,11 +44,7 @@ class Login extends Component {
         <PageContainer>
           <Modal>
             <Input placeholder="Email" type="email" onChange={evt => this.handleChange(evt, 'email')} value={this.state.email} />
-            <br />
-            <br />
             <Input placeholder="Password" type="password" onChange={evt => this.handleChange(evt, 'password')} value={this.state.password} />
-            <br />
-            <br />
             <Button name="Login" onClick={() => this.login()} />
             <Link route="/signup">
               <Button name="Or Signup" />

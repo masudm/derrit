@@ -40,14 +40,8 @@ export default class Signup extends Component {
         <PageContainer>
           <Modal>
             <Input placeholder="Username" type="username" onChange={evt => this.handleChange(evt, 'username')} value={this.state.username} />
-            <br />
-            <br />
             <Input placeholder="Email" type="email" onChange={evt => this.handleChange(evt, 'email')} value={this.state.email} />
-            <br />
-            <br />
             <Input placeholder="Password" type="password" onChange={evt => this.handleChange(evt, 'password')} value={this.state.password} />
-            <br />
-            <br />
             <Button name="Signup" onClick={() => this.signup()} />
             <Link route="/login">
               <Button name="Or Login" />
