@@ -4,6 +4,6 @@ export function getPosts() {
     let posts = [{title: 'hi'}, {title: 'hi2'}];
     return {
         type: types.GET_POSTS,
-        posts: posts
+        payload: posts
     }
 }
