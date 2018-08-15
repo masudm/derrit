@@ -2,17 +2,20 @@ import React, { Component } from 'react'
 import Page from 'components/page'
 import Div from 'components/core/div'
 import styled from 'styled-components'
+import { connect } from 'react-redux'
 import '~/styles/global'
 import Modal from '../components/modal'
 import Input from '../components/input'
 import Button from '../components/button'
 import { Link } from '../routes'
+import ReduxWrapper from '../components/ReduxWrapper'
+import * as userActions from '../actions/userActions'
 
 const PageContainer = styled(Div)`
   flex-direction: column;
   font-family: ${props => props.theme.serifFontFamily};
 `
-export default class Signup extends Component {
+class Signup extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -31,7 +34,7 @@ export default class Signup extends Component {
     const username = this.state.username
     const password = this.state.password
 
-    console.log(email, password, username)
+    console.log(email, password, username, this.props)
   }
 
   render() {
@@ -52,3 +55,5 @@ export default class Signup extends Component {
     )
   }
 }
+
+export default ReduxWrapper(connect(state => state, userActions)(Signup))
