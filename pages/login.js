@@ -9,7 +9,7 @@ import { Link } from '../routes'
 import Modal from '../components/modal'
 import Input from '../components/input'
 import Button from '../components/button'
-import Wrapper from '../components/wrapper'
+import ReduxWrapper from '../components/ReduxWrapper'
 import * as userActions from '../actions/userActions'
 
 const PageContainer = styled(Div)`
@@ -73,4 +73,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default Wrapper(connect(mapStateToProps, mapDispatchToProps)(Login))
+export default ReduxWrapper(connect(mapStateToProps, mapDispatchToProps)(Login))

@@ -6,7 +6,7 @@ import styled from 'styled-components'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import '~/styles/global'
-import Wrapper from '../components/wrapper'
+import ReduxWrapper from '../components/ReduxWrapper'
 import * as postActions from '../actions/postActions'
 
 const PageContainer = styled(Div)`
@@ -41,4 +41,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default Wrapper(connect(mapStateToProps, mapDispatchToProps)(Index))
+export default ReduxWrapper(connect(mapStateToProps, mapDispatchToProps)(Index))
