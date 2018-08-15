@@ -3,7 +3,6 @@ import Page from 'components/page'
 import Div from 'components/core/div'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
 import '~/styles/global'
 import { Link } from '../routes'
 import Modal from '../components/modal'
@@ -34,7 +33,7 @@ class Login extends Component {
     const email = this.state.email
     // const password = this.state.password
 
-    this.props.userActions.addUserEmail(email)
+    this.props.addUserEmail(email)
 
     console.log(this.props)
   }
@@ -61,16 +60,4 @@ class Login extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    user: state.user,
-  }
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    userActions: bindActionCreators(userActions, dispatch),
-  }
-}
-
-export default ReduxWrapper(connect(mapStateToProps, mapDispatchToProps)(Login))
+export default ReduxWrapper(connect(state => state, userActions)(Login))
