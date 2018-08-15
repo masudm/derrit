@@ -2,18 +2,22 @@ import React, { Component } from 'react'
 import Page from 'components/page'
 import Div from 'components/core/div'
 import styled from 'styled-components'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import '~/styles/global'
+import { Link } from '../routes'
 import Modal from '../components/modal'
 import Input from '../components/input'
 import Button from '../components/button'
-import { Link } from '../routes'
+import Wrapper from '../components/wrapper'
+import * as userActions from '../actions/userActions'
 
 const PageContainer = styled(Div)`
   flex-direction: column;
   font-family: ${props => props.theme.serifFontFamily};
   align-items: center;
 `
-export default class Login extends Component {
+class Login extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -27,10 +31,10 @@ export default class Login extends Component {
   }
 
   login() {
-    const email = this.state.email
-    const password = this.state.password
+    // const email = this.state.email
+    // const password = this.state.password
 
-    console.log(email, password)
+    console.log(this.props)
   }
 
   render() {
@@ -54,3 +58,17 @@ export default class Login extends Component {
     )
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    user: state.user,
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    userActions: bindActionCreators(userActions, dispatch),
+  }
+}
+
+export default Wrapper(connect(mapStateToProps, mapDispatchToProps)(Login))
