@@ -8,6 +8,6 @@ const StyledInput = styled.input`
 
 export default class Input extends Component {
   render() {
-    return <StyledInput type={this.props.type} placeholder={this.props.placeholder} onChange={this.props.onChange} />
+    return <StyledInput {...this.props} />
   }
 }
