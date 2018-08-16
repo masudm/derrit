@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
 const Container = styled.div`
@@ -10,8 +10,8 @@ const Container = styled.div`
   width: 50%;
 `
 
-export default class Modal extends Component {
-  render() {
-    return <Container>{this.props.children}</Container>
-  }
+const Modal = props => {
+  return <Container>{props.children}</Container>
 }
+
+export default Modal
