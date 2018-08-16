@@ -17,10 +17,6 @@ const PageContainer = styled(Div)`
   font-family: ${props => props.theme.serifFontFamily};
 `
 class Signup extends Component {
-  handleChange(event, key) {
-    this.props.addInput(key, event.target.value)
-  }
-
   signup() {
     console.log(this.props.input)
   }
@@ -30,9 +26,9 @@ class Signup extends Component {
       <Page>
         <PageContainer>
           <Modal>
-            <Input placeholder="Username" type="username" onChange={evt => this.handleChange(evt, 'username')} value={this.props.input.username} />
-            <Input placeholder="Email" type="email" onChange={evt => this.handleChange(evt, 'email')} value={this.props.input.email} />
-            <Input placeholder="Password" type="password" onChange={evt => this.handleChange(evt, 'password')} value={this.props.input.password} />
+            <Input placeholder="Username" type="username" onChange={evt => this.props.addInput('username', evt.target.value)} value={this.props.input.username} />
+            <Input placeholder="Email" type="email" onChange={evt => this.props.addInput('email', evt.target.value)} value={this.props.input.email} />
+            <Input placeholder="Password" type="password" onChange={evt => this.props.addInput('password', evt.target.value)} value={this.props.input.password} />
             <Button name="Signup" onClick={() => this.signup()} />
             <Link route="/login">
               <Button name="Or Login" />

@@ -18,15 +18,6 @@ const PageContainer = styled(Div)`
   align-items: center;
 `
 class Login extends Component {
-  constructor(props) {
-    super(props)
-    console.log(this.props)
-  }
-
-  handleChange(event, key) {
-    this.props.addInput(key, event.target.value)
-  }
-
   login() {
     const email = this.props.input.email
 
@@ -38,8 +29,8 @@ class Login extends Component {
       <Page>
         <PageContainer>
           <Modal>
-            <Input placeholder="Email" type="email" onChange={evt => this.handleChange(evt, 'email')} value={this.props.input.email} />
-            <Input placeholder="Password" type="password" onChange={evt => this.handleChange(evt, 'password')} value={this.props.input.password} />
+            <Input placeholder="Email" type="email" onChange={evt => this.props.addInput('email', evt.target.value)} value={this.props.input.email} />
+            <Input placeholder="Password" type="password" onChange={evt => this.props.addInput('password', evt.target.value)} value={this.props.input.password} />
             <Button name="Login" onClick={() => this.login()} />
             <Link route="/signup">
               <Button name="Or Signup" />
