@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
 const StyledInput = styled.input`
@@ -10,8 +10,8 @@ const StyledInput = styled.input`
   margin-bottom: 10px;
 `
 
-export default class Input extends Component {
-  render() {
-    return <StyledInput {...this.props} />
-  }
+const Input = props => {
+  return <StyledInput {...props} />
 }
+
+export default Input
