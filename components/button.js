@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
 const StyledButton = styled.button`
@@ -12,8 +12,8 @@ const StyledButton = styled.button`
   }
 `
 
-export default class Button extends Component {
-  render() {
-    return <StyledButton onClick={this.props.onClick}>{this.props.name}</StyledButton>
-  }
+const Button = props => {
+  return <StyledButton {...props}>{props.name}</StyledButton>
 }
+
+export default Button
