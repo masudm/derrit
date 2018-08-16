@@ -5,7 +5,7 @@ import rootReducer from '../reducers/rootReducer'
 let composeEnhancers = compose
 
 if (typeof window !== 'undefined') {
-  // eslint-disable-next-line no-use-before-define
+  // eslint-disable-next-line no-underscore-dangle
   composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
 }
 
