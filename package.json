@@ -17,7 +17,7 @@
     "lint:watch": "nodemon --watch ./ --exec \"npm run lint:without:prettier\"",
     "lint": "eslint ./pages ./components ./styles ./actions ./reducers ./store",
     "lint:without:prettier": "npm run lint:js -- --rule 'prettier/prettier: 0'",
-    "format:js": "prettier --single-quote --trailing-comma all --no-semi --print-width 180 --write \"{pages,styles,components,actions,reducers,store}/**/*.js\"",
+    "format:js": "prettier --single-quote --trailing-comma all --no-semi --print-width 180 --write \"{pages,styles,components,actions,reducers,store}/**/*.js\" ",
     "precommit": "lint-staged && npm run lint",
     "eslint-check": "eslint --print-config .eslintrc | eslint-config-prettier-check"
   },
