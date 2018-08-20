@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux'
 import posts from './postsReducer'
 import user from './userReducer'
-import input from './inputReducer'
+import userInputReducer from './userInputReducer'
 
 const rootReducer = combineReducers({
   posts: posts,
   user: user,
-  input: input,
+  input: userInputReducer,
 })
 
 export default rootReducer
