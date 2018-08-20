@@ -1,8 +1,6 @@
-import { USER_INPUT } from '../actions/actionTypes'
-
 export default function input(state = {}, action) {
   switch (action.type) {
-    case USER_INPUT: {
+    case 'input/USER_INPUT': {
       const payload = action.payload
       return {
         ...state,
