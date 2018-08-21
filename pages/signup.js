@@ -10,7 +10,6 @@ import Button from '../components/button'
 import { Link } from '../routes'
 import ReduxWrapper from '../components/ReduxWrapper'
 import * as userActions from '../actions/userActions'
-import * as inputActions from '../actions/inputActions'
 
 const PageContainer = styled(Div)`
   flex-direction: column;
@@ -18,7 +17,7 @@ const PageContainer = styled(Div)`
 `
 class Signup extends Component {
   signup() {
-    console.log(this.props.input)
+    console.log(this.props.user)
   }
 
   render() {
@@ -26,9 +25,9 @@ class Signup extends Component {
       <Page>
         <PageContainer>
           <Modal>
-            <Input placeholder="Username" type="username" onChange={evt => this.props.addInput('username', evt.target.value)} value={this.props.input.username} />
-            <Input placeholder="Email" type="email" onChange={evt => this.props.addInput('email', evt.target.value)} value={this.props.input.email} />
-            <Input placeholder="Password" type="password" onChange={evt => this.props.addInput('password', evt.target.value)} value={this.props.input.password} />
+            <Input placeholder="Username" type="username" onChange={evt => this.props.addUsername(evt.target.value)} value={this.props.user.username} />
+            <Input placeholder="Email" type="email" onChange={evt => this.props.addUserEmail(evt.target.value)} value={this.props.user.email} />
+            <Input placeholder="Password" type="password" onChange={evt => this.props.addUserPassword(evt.target.value)} value={this.props.user.password} />
             <Button name="Signup" onClick={() => this.signup()} />
             <Link route="/login">
               <Button name="Or Login" />
@@ -40,4 +39,4 @@ class Signup extends Component {
   }
 }
 
-export default ReduxWrapper(connect(state => state, { ...userActions, ...inputActions })(Signup))
+export default ReduxWrapper(connect(state => state, { ...userActions })(Signup))
