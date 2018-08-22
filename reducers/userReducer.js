@@ -6,6 +6,12 @@ export default function user(state = {}, action) {
         error: action.payload,
       }
     }
+    case 'user/ADD_FIREBASE_USER': {
+      return {
+        ...state,
+        firebaseUser: action.payload,
+      }
+    }
     case 'user/ADD_USER_EMAIL': {
       return {
         ...state,

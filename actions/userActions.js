@@ -1,3 +1,10 @@
+export function addFirebaseUser(user) {
+  return {
+    type: 'user/ADD_FIREBASE_USER',
+    payload: user,
+  }
+}
+
 export function addUserError(error) {
   return {
     type: 'user/ADD_USER_ERROR',

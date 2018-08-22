@@ -10,6 +10,7 @@ import Input from '../components/input'
 import Button from '../components/button'
 import ReduxWrapper from '../components/ReduxWrapper'
 import * as userActions from '../actions/userActions'
+import firebase from '../components/firebase'
 
 const PageContainer = styled(Div)`
   flex-direction: column;
@@ -18,9 +19,17 @@ const PageContainer = styled(Div)`
 `
 class Login extends Component {
   login() {
-    const email = this.props.user.email
-
-    console.log(email)
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(this.props.user.email, this.props.user.password)
+      .then(user => {
+        this.props.addFirebaseUser(user)
+        window.location = '/'
+      })
+      .catch(error => {
+        this.props.addUserError(error.message)
+        return false
+      })
   }
 
   render() {
@@ -28,6 +37,7 @@ class Login extends Component {
       <Page>
         <PageContainer>
           <Modal>
+            <span>{this.props.user.error}</span>
             <Input placeholder="Email" type="email" onChange={evt => this.props.addUserEmail(evt.target.value)} value={this.props.user.email} />
             <Input placeholder="Password" type="password" onChange={evt => this.props.addUserPassword(evt.target.value)} value={this.props.user.password} />
             <Button name="Login" onClick={() => this.login()} />

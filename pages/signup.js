@@ -21,10 +21,14 @@ class Signup extends Component {
     firebase
       .auth()
       .createUserWithEmailAndPassword(this.props.user.email, this.props.user.password)
+      .then(user => {
+        this.props.addFirebaseUser(user)
+        window.location = '/'
+      })
       .catch(error => {
         this.props.addUserError(error.message)
+        return false
       })
-    window.location = '/'
   }
 
   render() {
