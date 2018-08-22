@@ -1,3 +1,10 @@
+export function addUserError(error) {
+  return {
+    type: 'user/ADD_USER_ERROR',
+    payload: error,
+  }
+}
+
 export function addUserEmail(email) {
   return {
     type: 'user/ADD_USER_EMAIL',

@@ -1,5 +1,11 @@
 export default function user(state = {}, action) {
   switch (action.type) {
+    case 'user/ADD_USER_ERROR': {
+      return {
+        ...state,
+        error: action.payload,
+      }
+    }
     case 'user/ADD_USER_EMAIL': {
       return {
         ...state,

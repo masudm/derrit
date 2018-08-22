@@ -10,6 +10,7 @@ import Button from '../components/button'
 import { Link } from '../routes'
 import ReduxWrapper from '../components/ReduxWrapper'
 import * as userActions from '../actions/userActions'
+import firebase from '../components/firebase'
 
 const PageContainer = styled(Div)`
   flex-direction: column;
@@ -17,7 +18,13 @@ const PageContainer = styled(Div)`
 `
 class Signup extends Component {
   signup() {
-    console.log(this.props.user)
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(this.props.user.email, this.props.user.password)
+      .catch(error => {
+        this.props.addUserError(error.message)
+      })
+    window.location = '/'
   }
 
   render() {
@@ -25,6 +32,7 @@ class Signup extends Component {
       <Page>
         <PageContainer>
           <Modal>
+            <span>{this.props.user.error}</span>
             <Input placeholder="Username" type="username" onChange={evt => this.props.addUsername(evt.target.value)} value={this.props.user.username} />
             <Input placeholder="Email" type="email" onChange={evt => this.props.addUserEmail(evt.target.value)} value={this.props.user.email} />
             <Input placeholder="Password" type="password" onChange={evt => this.props.addUserPassword(evt.target.value)} value={this.props.user.password} />
