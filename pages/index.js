@@ -6,7 +6,6 @@ import styled from 'styled-components'
 import '~/styles/global'
 import { connect } from 'react-redux'
 import ReduxWrapper from '../components/ReduxWrapper'
-import * as userActions from '../actions/userActions'
 
 const PageContainer = styled(Div)`
   flex-direction: column;
@@ -24,4 +23,4 @@ class Index extends Component {
   }
 }
 
-export default ReduxWrapper(connect(state => state, { ...userActions })(Index))
+export default ReduxWrapper(connect(state => state)(Index))
