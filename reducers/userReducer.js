@@ -7,9 +7,13 @@ export default function user(state = {}, action) {
       }
     }
     case 'user/ADD_FIREBASE_USER': {
+      // split the firebase payload into the user & firebase credential info (prevents having to do user.user)
+      let payload = Object.assign({}, action.payload) // eslint-disable-line prefer-const
+      delete payload.user
       return {
         ...state,
-        firebaseUser: action.payload,
+        ...action.payload.user,
+        ...payload,
       }
     }
     case 'user/ADD_USER_EMAIL': {
