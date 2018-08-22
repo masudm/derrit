@@ -4,6 +4,7 @@ import Div from 'components/core/div'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
 import '~/styles/global'
+import Router from 'next/router'
 import { Link } from '../routes'
 import Modal from '../components/modal'
 import Input from '../components/input'
@@ -23,11 +24,11 @@ class Login extends Component {
       .auth()
       .signInWithEmailAndPassword(this.props.user.email, this.props.user.password)
       .then(user => {
-        this.props.addFirebaseUser(user)
-        window.location = '/'
+        this.props.dispatch(userActions.addFirebaseUser(user))
+        Router.push('/')
       })
       .catch(error => {
-        this.props.addUserError(error.message)
+        this.props.dispatch(userActions.addUserError(error.message))
         return false
       })
   }
@@ -38,8 +39,8 @@ class Login extends Component {
         <PageContainer>
           <Modal>
             <span>{this.props.user.error}</span>
-            <Input placeholder="Email" type="email" onChange={evt => this.props.addUserEmail(evt.target.value)} value={this.props.user.email} />
-            <Input placeholder="Password" type="password" onChange={evt => this.props.addUserPassword(evt.target.value)} value={this.props.user.password} />
+            <Input placeholder="Email" type="email" onChange={evt => this.props.dispatch(userActions.addUserEmail(evt.target.value))} value={this.props.user.email} />
+            <Input placeholder="Password" type="password" onChange={evt => this.props.dispatch(userActions.addUserPassword(evt.target.value))} value={this.props.user.password} />
             <Button name="Login" onClick={() => this.login()} />
             <Link route="/signup">
               <Button name="Or Signup" />
@@ -51,4 +52,4 @@ class Login extends Component {
   }
 }
 
-export default ReduxWrapper(connect(state => state, { ...userActions })(Login))
+export default ReduxWrapper(connect(state => state)(Login))
