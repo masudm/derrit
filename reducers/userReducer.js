@@ -1,3 +1,5 @@
+import _ from 'lodash'
+
 export default function user(state = {}, action) {
   switch (action.type) {
     case 'user/ADD_USER_ERROR': {
@@ -7,13 +9,15 @@ export default function user(state = {}, action) {
       }
     }
     case 'user/ADD_FIREBASE_USER': {
-      // split the firebase payload into the user & firebase credential info (prevents having to do user.user)
-      let payload = Object.assign({}, action.payload) // eslint-disable-line prefer-const
-      delete payload.user
+      // split the firebase payload into two objects: userDetails and credentials
+      // this allows flattening of the object (so accessing it won't need you to call `user.user` but rather just `user`)
+      let payload = { ...action.payload } // eslint-disable-line prefer-const
+      let userDetails = { ...action.payload.user } // eslint-disable-line prefer-const
+      let credentials = _.omit(payload, ['user']) // eslint-disable-line prefer-const
       return {
         ...state,
-        ...action.payload.user,
-        ...payload,
+        ...userDetails,
+        credentials: { ...credentials },
       }
     }
     case 'user/ADD_USER_EMAIL': {
