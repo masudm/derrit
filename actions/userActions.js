@@ -55,7 +55,25 @@ export function signup() {
 
       Router.push('/')
     } catch (error) {
-      dispatch({ type: 'user/ADD_USER_ERROR', payload: error })
+      dispatch({ type: 'user/ADD_USER_ERROR', payload: error.message })
+      throw error
+    }
+  }
+}
+
+export function login() {
+  return async (dispatch, getState) => {
+    const email = getState().user.email
+    const password = getState().user.password
+
+    try {
+      const user = await firebase.auth().signInWithEmailAndPassword(email, password)
+
+      dispatch({ type: 'user/ADD_FIREBASE_USER', payload: user })
+
+      Router.push('/')
+    } catch (error) {
+      dispatch({ type: 'user/ADD_USER_ERROR', payload: error.message })
       throw error
     }
   }
