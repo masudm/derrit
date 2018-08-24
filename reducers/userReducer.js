@@ -1,15 +1,17 @@
 export default function user(state = {}, action) {
   switch (action.type) {
-    case 'user/ADD_USER_ERROR': {
+    case 'user/SIGNUP_USER_ERROR':
+    case 'user/LOGIN_USER_ERROR': {
       return {
         ...state,
         error: action.payload,
       }
     }
-    case 'user/ADD_FIREBASE_USER': {
+    case 'user/SIGNUP_USER_REQUEST':
+    case 'user/LOGIN_USER_REQUEST': {
       return {
         ...state,
-        ...action.payload,
+        loading: true,
       }
     }
     case 'user/SIGNUP_USER': {

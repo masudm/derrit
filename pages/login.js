@@ -29,6 +29,7 @@ class Login extends Component {
         <PageContainer>
           <Modal>
             <span>{this.props.user.error}</span>
+            {this.props.user.loading ? <span>Loading...</span> : null}
             <Input placeholder="Email" type="email" onChange={event => this.props.dispatch(addUserEmail(event.target.value))} value={this.props.user.email} />
             <Input placeholder="Password" type="password" onChange={event => this.props.dispatch(addUserPassword(event.target.value))} value={this.props.user.password} />
             <Button name="Login" onClick={() => this.loginUser()} />
