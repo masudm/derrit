@@ -4,12 +4,14 @@ import Page from 'components/page'
 import Div from 'components/core/div'
 import styled from 'styled-components'
 import '~/styles/global'
+import { connect } from 'react-redux'
+import ReduxWrapper from '../components/ReduxWrapper'
 
 const PageContainer = styled(Div)`
   flex-direction: column;
   font-family: ${props => props.theme.serifFontFamily};
 `
-export default class Index extends Component {
+class Index extends Component {
   render() {
     return (
       <Page>
@@ -20,3 +22,5 @@ export default class Index extends Component {
     )
   }
 }
+
+export default ReduxWrapper(connect(state => state)(Index))

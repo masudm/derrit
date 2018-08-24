@@ -3,13 +3,14 @@ import Page from 'components/page'
 import Div from 'components/core/div'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
+import Router from 'next/router'
 import '~/styles/global'
 import { Link } from '../routes'
 import Modal from '../components/modal'
 import Input from '../components/input'
 import Button from '../components/button'
 import ReduxWrapper from '../components/ReduxWrapper'
-import * as userActions from '../actions/userActions'
+import { addUserEmail, addUserPassword, login } from '../actions/userActions'
 
 const PageContainer = styled(Div)`
   flex-direction: column;
@@ -17,10 +18,9 @@ const PageContainer = styled(Div)`
   align-items: center;
 `
 class Login extends Component {
-  login() {
-    const email = this.props.user.email
-
-    console.log(email)
+  async loginUser() {
+    await this.props.dispatch(login())
+    Router.push('/')
   }
 
   render() {
@@ -28,9 +28,11 @@ class Login extends Component {
       <Page>
         <PageContainer>
           <Modal>
-            <Input placeholder="Email" type="email" onChange={evt => this.props.addUserEmail(evt.target.value)} value={this.props.user.email} />
-            <Input placeholder="Password" type="password" onChange={evt => this.props.addUserPassword(evt.target.value)} value={this.props.user.password} />
-            <Button name="Login" onClick={() => this.login()} />
+            <span>{this.props.user.error}</span>
+            {this.props.user.loading ? <span>Loading...</span> : null}
+            <Input placeholder="Email" type="email" onChange={event => this.props.dispatch(addUserEmail(event.target.value))} value={this.props.user.email} />
+            <Input placeholder="Password" type="password" onChange={event => this.props.dispatch(addUserPassword(event.target.value))} value={this.props.user.password} />
+            <Button name="Login" onClick={() => this.loginUser()} />
             <Link route="/signup">
               <Button name="Or Signup" />
             </Link>
@@ -41,4 +43,4 @@ class Login extends Component {
   }
 }
 
-export default ReduxWrapper(connect(state => state, { ...userActions })(Login))
+export default ReduxWrapper(connect(state => state)(Login))
