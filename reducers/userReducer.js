@@ -14,15 +14,11 @@ export default function user(state = {}, action) {
         loading: true,
       }
     }
-    case 'user/SIGNUP_USER_SUCCESS': {
-      return {
-        ...state,
-        ...action.payload,
-      }
-    }
+    case 'user/SIGNUP_USER_SUCCESS':
     case 'user/LOGIN_USER_SUCCESS': {
       return {
         ...state,
+        loading: false,
         ...action.payload,
       }
     }
