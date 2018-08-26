@@ -2,4 +2,5 @@ const routes = require('next-routes')
 
 module.exports = routes()
 .add('signup')
-.add('login');
+.add('login')
+.add('posts');
