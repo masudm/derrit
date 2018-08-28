@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Page from 'components/page'
 import Div from 'components/core/div'
 import styled from 'styled-components'
+import _ from 'lodash'
 import { connect } from 'react-redux'
 import '~/styles/global'
 import Modal from '../components/modal'
@@ -26,11 +27,9 @@ class Posts extends Component {
           <Modal>
             <span>{this.props.posts.error}</span>
             {this.props.posts.loading ? <span>Loading...</span> : null}
-            {this.props.posts.posts != null
-              ? this.props.posts.posts.map(val => {
-                  return <Post {...val[1]} />
-                })
-              : null}
+            {_.map(this.props.posts.posts, (post, index) => {
+              return <Post {...post} key={index} />
+            })}
           </Modal>
         </PageContainer>
       </Page>

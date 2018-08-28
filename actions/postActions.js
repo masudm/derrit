@@ -9,11 +9,7 @@ export function getPosts() {
         .ref('posts/')
         .on('value', snapshot => {
           const data = snapshot.val()
-          // convert the data object into an array so you can map it
-          const posts = Object.keys(data).map(key => {
-            return [Number(key), data[key]]
-          })
-          dispatch({ type: 'posts/POST_SUCCESS', payload: posts })
+          dispatch({ type: 'posts/POST_SUCCESS', payload: data })
         })
     } catch (error) {
       dispatch({ type: 'posts/POST_ERROR', payload: error.message })

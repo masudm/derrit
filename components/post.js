@@ -6,24 +6,16 @@ const Container = styled.div`
   background-color: white;
   padding: 10px;
   margin-bottom: 10px;
-  text-align: center;
+  text-align: left;
   width: 95%;
   width: calc(100% - 20px);
   box-shadow: 10px 10px 20px -7px rgba(0, 0, 0, 0.35);
-
-  > * {
-    text-align: left;
-  }
-
-  > p {
-    font-size: 1.2em;
-  }
 `
 
 const Post = props => {
   return (
     <Container>
-      <h1>{props.title}</h1>
+      <h2>{props.title}</h2>
       <p>{props.body}</p>
       <p>
         <i>{props.timestamp}</i>
