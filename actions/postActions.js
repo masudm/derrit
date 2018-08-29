@@ -8,8 +8,8 @@ export function getPosts() {
         .database()
         .ref('posts/')
         .on('value', snapshot => {
-          const data = snapshot.val()
-          dispatch({ type: 'posts/POST_SUCCESS', payload: data })
+          const posts = snapshot.val()
+          dispatch({ type: 'posts/POST_SUCCESS', payload: posts })
         })
     } catch (error) {
       dispatch({ type: 'posts/POST_ERROR', payload: error.message })

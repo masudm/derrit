@@ -12,14 +12,26 @@ const Container = styled.div`
   box-shadow: 10px 10px 20px -7px rgba(0, 0, 0, 0.35);
 `
 
+const Title = styled.h2`
+  font-weight: 400;
+  font-size: 1.5em;
+`
+
+const Body = styled.p`
+  font-size: 1.2em;
+`
+const Time = styled.p`
+  font-style: italic;
+  color: lightgrey;
+  font-size: 1em;
+`
+
 const Post = props => {
   return (
     <Container>
-      <h2>{props.title}</h2>
-      <p>{props.body}</p>
-      <p>
-        <i>{props.timestamp}</i>
-      </p>
+      <Title>{props.title}</Title>
+      <Body>{props.body}</Body>
+      <Time>{props.timestamp}</Time>
     </Container>
   )
 }
