@@ -15,9 +15,9 @@
     "deploy:ci:prod": "npm run deploy:prod -- --token=E4RjOF6qkG8lj63zfDmeW0hT",
     "postinstall": "npm run check:node",
     "lint:watch": "nodemon --watch ./ --exec \"npm run lint:without:prettier\"",
-    "lint": "eslint ./pages ./components ./styles ./actions ./reducers ./store",
+    "lint": "eslint ./pages ./components ./styles ./actions ./reducers ./store ./helpers",
     "lint:without:prettier": "npm run lint:js -- --rule 'prettier/prettier: 0'",
-    "format:js": "prettier --single-quote --trailing-comma all --no-semi --print-width 180 --write \"{pages,styles,components,actions,reducers,store}/**/*.js\" ",
+    "format:js": "prettier --single-quote --trailing-comma all --no-semi --print-width 180 --write \"{pages,styles,components,actions,reducers,store,helpers}/**/*.js\" ",
     "precommit": "lint-staged && npm run lint",
     "eslint-check": "eslint --print-config .eslintrc | eslint-config-prettier-check"
   },

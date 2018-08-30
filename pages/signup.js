@@ -11,7 +11,7 @@ import Button from '../components/button'
 import { Link } from '../routes'
 import ReduxWrapper from '../components/ReduxWrapper'
 import { addUsername, addUserEmail, addUserPassword, signup } from '../actions/userActions'
-import isLoggedIn from '../components/IsLoggedIn'
+import isLoggedIn from '../actions/IsLoggedIn'
 
 const PageContainer = styled(Div)`
   flex-direction: column;
@@ -19,7 +19,7 @@ const PageContainer = styled(Div)`
 `
 class Signup extends Component {
   async componentDidMount() {
-    isLoggedIn(this.props.dispatch).then(loggedIn => {
+    await isLoggedIn(this.props.dispatch).then(loggedIn => {
       if (loggedIn) {
         Router.push('/')
       }

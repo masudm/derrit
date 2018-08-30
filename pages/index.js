@@ -3,16 +3,16 @@ import Router from 'next/router'
 import '~/styles/global'
 import { connect } from 'react-redux'
 import ReduxWrapper from '../components/ReduxWrapper'
-import isLoggedIn from '../components/IsLoggedIn'
+import isLoggedIn from '../actions/IsLoggedIn'
 
 class Index extends Component {
-  componentDidMount() {
+  async componentDidMount() {
     // redirect to posts
     if (this.props.user.loggedIn) {
       Router.push('/')
     }
 
-    isLoggedIn(this.props.dispatch).then(loggedIn => {
+    await isLoggedIn(this.props.dispatch).then(loggedIn => {
       if (loggedIn) {
         Router.push('/posts')
       } else {

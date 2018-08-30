@@ -1,4 +1,5 @@
 import firebase from '../components/firebase'
+import { randomString } from '../helpers/randomString'
 
 export function getPosts() {
   return async dispatch => {
@@ -33,16 +34,6 @@ export function addNewBody(body) {
 }
 
 export function createPost() {
-  // https://stackoverflow.com/questions/1349404/generate-random-string-characters-in-javascript
-  function randomString() {
-    let text = ''
-    const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
-
-    for (let i = 0; i < 5; i += 1) text += possible.charAt(Math.floor(Math.random() * possible.length))
-
-    return text
-  }
-
   return async (dispatch, getState) => {
     dispatch({ type: 'posts/NEW_POST_REQUEST' })
     try {

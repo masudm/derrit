@@ -1,5 +1,5 @@
-import { addFirebaseUser } from '../actions/userActions'
-import firebase from './firebase'
+import { addFirebaseUser } from './userActions'
+import firebase from '../components/firebase'
 
 export default async function isLoggedIn(dispatch) {
   const user = firebase.auth().currentUser
