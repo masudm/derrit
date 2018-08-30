@@ -28,6 +28,13 @@ export function addUserToken(token) {
   }
 }
 
+export function addFirebaseUser(user) {
+  return {
+    type: 'user/SIGNUP_USER_SUCCESS',
+    payload: user,
+  }
+}
+
 export function signup() {
   return async (dispatch, getState) => {
     dispatch({ type: 'user/SIGNUP_USER_REQUEST' })

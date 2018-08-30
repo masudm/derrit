@@ -11,6 +11,7 @@ import Input from '../components/input'
 import Button from '../components/button'
 import ReduxWrapper from '../components/ReduxWrapper'
 import { addUserEmail, addUserPassword, login } from '../actions/userActions'
+import isLoggedIn from '../components/IsLoggedIn'
 
 const PageContainer = styled(Div)`
   flex-direction: column;
@@ -18,6 +19,12 @@ const PageContainer = styled(Div)`
   align-items: center;
 `
 class Login extends Component {
+  async componentDidMount() {
+    if (isLoggedIn(this.props.dispatch)) {
+      Router.push('/posts')
+    }
+  }
+
   async loginUser() {
     await this.props.dispatch(login())
     Router.push('/')

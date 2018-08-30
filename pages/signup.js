@@ -11,12 +11,19 @@ import Button from '../components/button'
 import { Link } from '../routes'
 import ReduxWrapper from '../components/ReduxWrapper'
 import { addUsername, addUserEmail, addUserPassword, signup } from '../actions/userActions'
+import isLoggedIn from '../components/IsLoggedIn'
 
 const PageContainer = styled(Div)`
   flex-direction: column;
   font-family: ${props => props.theme.serifFontFamily};
 `
 class Signup extends Component {
+  async componentDidMount() {
+    if (isLoggedIn(this.props.dispatch)) {
+      Router.push('/posts')
+    }
+  }
+
   async signupUser() {
     await this.props.dispatch(signup())
     Router.push('/')
