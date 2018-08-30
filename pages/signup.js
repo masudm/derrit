@@ -19,9 +19,11 @@ const PageContainer = styled(Div)`
 `
 class Signup extends Component {
   async componentDidMount() {
-    if (isLoggedIn(this.props.dispatch)) {
-      Router.push('/posts')
-    }
+    isLoggedIn(this.props.dispatch).then(loggedIn => {
+      if (loggedIn) {
+        Router.push('/')
+      }
+    })
   }
 
   async signupUser() {

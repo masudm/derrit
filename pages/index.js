@@ -8,11 +8,17 @@ import isLoggedIn from '../components/IsLoggedIn'
 class Index extends Component {
   componentDidMount() {
     // redirect to posts
-    if (isLoggedIn(this.props.dispatch)) {
-      Router.push('/posts')
-    } else {
-      Router.push('/login')
+    if (this.props.user.loggedIn) {
+      Router.push('/')
     }
+
+    isLoggedIn(this.props.dispatch).then(loggedIn => {
+      if (loggedIn) {
+        Router.push('/posts')
+      } else {
+        Router.push('/login')
+      }
+    })
   }
   render() {
     return null

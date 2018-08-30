@@ -21,6 +21,7 @@ export default function user(state = {}, action) {
         ...state,
         loading: false,
         error: null,
+        loggedIn: true,
         ...action.payload,
       }
     }
