@@ -3,4 +3,5 @@ const routes = require('next-routes')
 module.exports = routes()
 .add('signup')
 .add('login')
-.add('posts');
+.add('posts')
+.add('newpost');

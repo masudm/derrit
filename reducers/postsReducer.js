@@ -4,6 +4,7 @@ export default function posts(state = [], action) {
       return {
         ...state,
         loading: true,
+        error: null,
       }
     case 'posts/POST_ERROR': {
       return {
@@ -16,6 +17,7 @@ export default function posts(state = [], action) {
       return {
         ...state,
         loading: false,
+        error: null,
         posts: action.payload,
       }
     }

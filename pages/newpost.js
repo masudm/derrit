@@ -2,45 +2,25 @@ import React, { Component } from 'react'
 import Page from 'components/page'
 import Div from 'components/core/div'
 import styled from 'styled-components'
-import _ from 'lodash'
-import Router from 'next/router'
 import { connect } from 'react-redux'
 import '~/styles/global'
 import Modal from '../components/modal'
 import ReduxWrapper from '../components/ReduxWrapper'
-import { getPosts } from '../actions/postActions'
-import Post from '../components/post'
 
 const PageContainer = styled(Div)`
   flex-direction: column;
   font-family: ${props => props.theme.serifFontFamily};
   align-items: center;
 `
-const NewPost = styled.button`
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 2px solid black;
-  background-color: white;
-  cursor: pointer;
-`
 
-class Posts extends Component {
-  componentDidMount() {
-    this.props.dispatch(getPosts())
-  }
-
+class NewPost extends Component {
   render() {
     return (
       <Page>
         <PageContainer>
           <Modal>
-            <NewPost onClick={() => Router.push('/newpost')}>Create a new post</NewPost>
             <span>{this.props.posts.error}</span>
             {this.props.posts.loading ? <span>Loading...</span> : null}
-            {_.map(this.props.posts.posts, (post, index) => {
-              return <Post {...post} key={index} />
-            })}
           </Modal>
         </PageContainer>
       </Page>
@@ -48,4 +28,4 @@ class Posts extends Component {
   }
 }
 
-export default ReduxWrapper(connect(state => state)(Posts))
+export default ReduxWrapper(connect(state => state)(NewPost))

@@ -11,6 +11,7 @@ export default function user(state = {}, action) {
     case 'user/LOGIN_USER_REQUEST': {
       return {
         ...state,
+        error: null,
         loading: true,
       }
     }
@@ -19,6 +20,7 @@ export default function user(state = {}, action) {
       return {
         ...state,
         loading: false,
+        error: null,
         ...action.payload,
       }
     }
